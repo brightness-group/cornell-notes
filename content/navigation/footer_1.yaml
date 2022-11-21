@@ -1,0 +1,6 @@
+title: 'Footer 1'
+collections:
+  - blog
+  - pages
+  - faq
+max_depth: 1

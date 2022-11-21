@@ -1,0 +1,83 @@
+{{#
+	@name Faq
+	@desc The Faq page builder block.
+    @set page.page_builder.faq
+#}}
+
+<div class="relative bg-light-white py-15">
+    <div class="h-header-height"></div>
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-end py-14 mobile:py-5 mobile:justify-center">
+            <ul class="flex text-lg text-font-black font-medium leading-none">
+                <li class="px-3 pt-1 border-r-2 border-font-black"><a href="/">Home</a></li>
+                <li class="pl-3 pt-1">{{ title }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="py-24 bg-white relative mobile:py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-9">
+            <h2 class="text-3xl text-primary font-medium">{{ heading }}</h2>
+            <div class="pt-2.5 pb-5">
+                <div class="w-20 border-t-2 border-brown"></div>
+            </div>
+            <p class="text-xl text-brown">{{ sub_heading }}</p>
+        </div>
+
+        <div>
+         
+            <div class="flex gap-x-8 mobile:flex-wrap" x-data="{ activeTab: 0, activeClass: 'block whitespace-nowrap text-lg text-font-black font-medium py-5 border-t border-b border-light-gray min-w-44', inactiveClass : 'block whitespace-nowrap text-lg text-cus-gray font-light py-5 min-w-44' }">
+                <ul class="mobile:w-full">
+                    
+                    {{ collection:faq }}
+                        <li>
+                            <a href="javascript:;" x-on:click="activeTab = {{ index }}" :class="activeTab === {{ index }} ? activeClass : inactiveClass">
+                                {{ title }}
+                            </a>
+                        </li>
+                    {{ /collection:faq }}
+
+                </ul>
+
+                <div class="w-full">
+
+                    {{ collection:faq }}
+                        <div x-show="activeTab === {{ index }}">
+                            <div class="flex w-full">
+                                {{ data  = '' }}
+
+                                {{ qa }}
+                                    {{ if index == 0 }}
+                                        {{ data = ' faq{{index}} : false' }}
+                                    {{ else }}
+                                        {{ data .= ', faq{{index}} : false' }}
+                                    {{ /if }}
+                                {{ /qa }}
+
+                                <div class="w-full border-b border-light-gray"  x-data="{ {{ data }} }">
+
+                                    {{ qa }}
+                                        <div @click="faq{{ index }} = ! faq{{ index }}" class="flex justify-between items-center gap-x-8 cursor-pointer text-lg text-primary font-medium py-5 {{index > 0 ? 'border-t border-light-gray' : ' pt-0 ' }}">
+                                            {{ question }}
+                                            <span>
+                                                {{ svg src="dropdown-submenu" }}
+                                            </span>
+                                        </div>
+                                        <div x-show="faq{{ index }}" class="pb-5 text-base text-light-black font-light">
+                                            <p>{{ answer }}</p>
+                                        </div>
+                                    {{ /qa }}
+
+                                </div>
+                            </div>
+                        </div>
+                    {{ /collection:faq }}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

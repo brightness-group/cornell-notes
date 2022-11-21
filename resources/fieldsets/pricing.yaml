@@ -1,0 +1,40 @@
+title: Pricing
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      display: Heading
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: sub_heading
+    field: common.text_plain
+    config:
+      display: 'Sub Heading'
+  -
+    handle: plans
+    field:
+      collapse: true
+      max_sets: 2
+      sets:
+        monthly_plan:
+          display: 'Monthly Plan'
+          fields:
+            -
+              import: plan
+        yearly_plan:
+          display: 'Yearly Plan'
+          fields:
+            -
+              import: plan
+      display: Plans
+      type: replicator
+      icon: replicator
+      listable: hidden
+      instructions_position: above
+      visibility: visible

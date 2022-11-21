@@ -1,0 +1,240 @@
+sections:
+  general:
+    display: General
+    fields:
+      -
+        handle: error_pages
+        field:
+          type: section
+          listable: hidden
+          display: 'Error pages'
+          instructions: 'Select the error pages.'
+      -
+        handle: error_404_entry
+        field: common.entry
+        config:
+          display: '404'
+          width: 50
+          instructions: 'Show all content of page whenever an URL does not exist.'
+          collections:
+            - pages
+          validate:
+            - required
+      -
+        handle: section_copyright
+        field:
+          type: section
+          listable: hidden
+          display: Copyright
+          instructions: 'Copyright configuration options.'
+      -
+        handle: copyright_since
+        field:
+          placeholder: '2020'
+          input_type: number
+          character_limit: 4
+          prepend: ©
+          antlers: false
+          default: '2020'
+          display: 'Copyright since'
+          instructions: 'The website will add ` - current_year ` if they differ.'
+          type: text
+          icon: text
+          width: 50
+          listable: hidden
+          instructions_position: above
+          validate:
+            - required
+      -
+        handle: copyright_name
+        field:
+          input_type: text
+          antlers: false
+          display: 'Copyright name'
+          type: text
+          icon: text
+          instructions: 'Falls back to the applicaton name.'
+          width: 50
+          listable: hidden
+          instructions_position: above
+      -
+        handle: section_privacy
+        field:
+          type: section
+          listable: hidden
+          display: 'Privacy statement'
+          instructions: 'Configure an optional privacy statement.'
+      -
+        handle: privacy_statement_type
+        field:
+          options:
+            none: None
+            entry: Entry
+            pdf: PDF
+          default: none
+          type: button_group
+          instructions: 'This will be used in form consent and in the optional cookie banner.'
+          instructions_position: below
+          listable: false
+          localizable: true
+          display: 'Privacy statement'
+          width: 50
+      -
+        handle: privacy_statement_asset
+        field: common.image
+        config:
+          localizable: true
+          listable: hidden
+          display: 'Privacy statement (PDF)'
+          width: 50
+          if:
+            privacy_statement_type: 'equals pdf'
+          validate:
+            - 'required_if:privacy_statement_type,pdf'
+      -
+        handle: privacy_statement_entry
+        field: common.entry
+        config:
+          localizable: true
+          listable: hidden
+          display: 'Privacy statement (entry)'
+          width: 50
+          if:
+            privacy_statement_type: 'equals entry'
+          validate:
+            - 'required_if:privacy_statement_type,entry'
+  contact:
+    display: Contact
+    fields:
+      -
+        handle: contact_details
+        field:
+          display: 'Contact Details'
+          type: section
+          icon: section
+          instructions: 'Set the contact details of site.'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+      -
+        handle: email
+        field:
+          input_type: email
+          antlers: false
+          display: Email
+          type: text
+          icon: text
+          width: 50
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          validate:
+            - required
+            - email
+      -
+        handle: telephone
+        field:
+          input_type: tel
+          antlers: false
+          display: Telephone
+          type: text
+          icon: text
+          width: 50
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+      -
+        handle: address
+        field: common.text_plain
+        config:
+          display: Address
+  site:
+    display: Site
+    fields:
+      -
+        handle: logo
+        field:
+          display: Logo
+          type: section
+          icon: section
+          instructions: 'Set the site logos.'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+      -
+        handle: main_logo
+        field: common.image
+        config:
+          display: 'Main Logo'
+          width: 33
+      -
+        handle: header_logo
+        field: common.image
+        config:
+          display: 'Header Logo'
+          width: 33
+          validate:
+            - required
+            - image
+      -
+        handle: footer_logo
+        field: common.image
+        config:
+          display: 'Footer Logo'
+          width: 33
+          validate:
+            - required
+            - image
+      -
+        handle: site_tagline
+        field:
+          display: 'Site Tagline'
+          type: section
+          icon: section
+          instructions: 'Set your site tagline.'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+      -
+        handle: tagline
+        field:
+          input_type: text
+          antlers: false
+          display: Tagline
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+      -
+        handle: newsletter
+        field:
+          display: Newsletter
+          type: section
+          icon: section
+          instructions: 'Set Your Newsletter.'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+      -
+        handle: newsletter_heading
+        field:
+          input_type: text
+          antlers: false
+          display: Heading
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+      -
+        handle: newsletter_sub_heading
+        field:
+          input_type: text
+          antlers: false
+          display: 'Sub Heading'
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible

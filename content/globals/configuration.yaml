@@ -1,0 +1,14 @@
+title: Configuration
+data:
+  error_404_entry: 059d4d8d-fc60-49f8-8823-7da10549e84e
+  copyright_since: 2022
+  copyright_name: 'Diligent Notes'
+  privacy_statement_type: entry
+  privacy_statement_entry: 567b2e05-a36a-489c-b022-2b1f9cc36ee8
+  email: support@diligentnotes.com
+  main_logo: logo/diligentnotes.png
+  header_logo: logo/logo.svg
+  footer_logo: logo/logo.svg
+  tagline: 'Easily create your Cornell Notes.'
+  newsletter_heading: 'Sign up for our newsletter.'
+  newsletter_sub_heading: 'Diligent Notes will send you emails on product updates and success stories!'

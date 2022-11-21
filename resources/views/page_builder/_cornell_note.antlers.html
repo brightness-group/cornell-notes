@@ -1,0 +1,35 @@
+{{#
+	@name Cornell Note
+	@desc The Cornell Note page builder block.
+    @set page.page_builder.cornell_note
+#}}
+
+<div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-9">
+            <h2 class="text-3xl text-primary font-medium">{{ heading }}</h2>
+            <div class="pt-2.5 pb-5">
+                <div class="w-20 border-t-2 border-brown"></div>
+            </div>
+            <p class="text-xl text-brown">{{ sub_heading }}</p>
+        </div>
+
+        <div>
+            <dl class="steps grid grid-cols-3 gap-x-8 gap-y-10 mobile:grid-cols-1">
+
+                {{ points }}
+                    <div class="step relative text-center">
+                        <dt>
+                            <div class="flex items-center justify-center w-full">
+                                <img class="h-44" src="{{ figure }}" alt="Diligent Notes">
+                            </div>
+                            <h3 class="mt-6 py-5 text-xl text-primary font-medium mobile:mt-3 mobile:py-2"><span>{{ caption }}</span></h3>
+                            <p class="text-lg text-light-black font-light">{{ description }}</p>
+                        </dt>
+                    </div>
+                {{ /points }}
+
+            </dl>
+        </div>
+    </div>
+</div>

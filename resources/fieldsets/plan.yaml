@@ -1,0 +1,44 @@
+title: Plan
+fields:
+  -
+    handle: title
+    field:
+      input_type: text
+      antlers: false
+      display: Title
+      type: text
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: summary
+    field:
+      input_type: text
+      antlers: false
+      display: Summary
+      type: text
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: price
+    field:
+      input_type: text
+      antlers: false
+      display: Price
+      type: text
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: icon
+    field: common.image
+    config:
+      display: Icon
+      width: 50

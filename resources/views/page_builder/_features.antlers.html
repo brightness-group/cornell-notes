@@ -1,0 +1,36 @@
+{{#
+	@name Features
+	@desc The Features page builder block.
+    @set page.page_builder.features
+#}}
+
+<div class="py-24 bg-white relative mobile:pb-12">
+    <div id="features" class="absolute -top-header-height"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10 ipadx:grid-cols-0">
+        <div class="ipadx:pb-5">
+            <h2 class="text-3xl text-primary font-medium">{{ heading }}</h2>
+            <div class="pt-2.5 pb-5">
+                <div class="w-20 border-t-2 border-brown"></div>
+            </div>
+            <p class="text-xl text-brown">{{ sub_heading }}</p>
+        </div>
+
+        <div class="col-span-2">
+            <dl class="grid grid-cols-2 gap-x-8 gap-y-10 mobile:grid-cols-1">
+
+                {{ features }}
+                    <div class="relative">
+                        <dt>
+                            <div class="flex items-center justify-center h-16 w-16">
+                                <img src="{{ icon }}">
+                            </div>
+                            <h3 class="py-5 text-xl text-light-black font-medium mobile:py-3">{{ title }}</h3>
+                            <p class="text-lg text-light-black font-light">{{ description }}</p>
+                        </dt>
+                    </div>
+                {{ /features }}
+
+            </dl>
+        </div>
+    </div>
+</div>

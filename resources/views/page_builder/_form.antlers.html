@@ -1,0 +1,152 @@
+{{#
+	@name Form
+	@desc The form page builder block.
+    @set page.page_builder.form
+#}}
+
+<!-- /page_builder/_form.antlers.html -->
+<script src="/vendor/statamic/frontend/js/helpers.js"></script>
+
+<div class="relative bg-light-white py-15">
+    <div class="h-header-height"></div>
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-end py-14 mobile:py-5 mobile:justify-center">
+            <ul class="flex text-lg text-font-black font-medium leading-none">
+                <li class="px-3 pt-1 border-r-2 border-font-black"><a href="/">Home</a></li>
+                <li class="pl-3 pt-1">{{ title }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="py-24 bg-white relative mobile:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-9">
+            <h2 class="text-3xl text-primary font-medium">{{ title }}</h2>
+            <div class="pt-2.5 pb-5">
+                <div class="w-20 border-t-2 border-brown"></div>
+            </div>
+            <p class="text-xl text-brown">{{ text }}</p>
+        </div>
+
+        <div x-data="sending">
+            <!-- Success messages -->
+            {{ form:create :in="form:handle"
+                id="form-{form:handle}"
+                csrf="false"
+                class="flex flex-wrap"
+                x-ref="form"
+                @submit.prevent="sendForm()"
+                js="alpine:dynamic_form"
+            }}
+
+                <div class="w-full grid md:grid-cols-12 gap-6">
+
+                    {{# Honeypot spam protection. #}}
+                    <div class="hidden">
+                        <label class="font-bold" for="{{ honeypot }}">{{ trans:strings.form_honeypot }} <sup class="text-yellow-400">*</sup></label>
+                        <input class="form-input w-full" id="{{ honeypot }}" type="text" name="{{ honeypot }}" tabindex="-1" autocomplete="off"/>
+                    </div>
+
+                    {{# Render the default-styled fields. #}}
+                    {{ fields }}
+                        <template x-if="{{ show_field }}">
+                            <div class="relative flex flex-col space-y-3
+                                {{ width == '25' ?= 'md:col-span-3' }}
+                                {{ width == '33' ?= 'md:col-span-4' }}
+                                {{ width == '50' ?= 'md:col-span-6' }}
+                                {{ width == '66' ?= 'md:col-span-8' }}
+                                {{ width == '75' ?= 'md:col-span-9' }}
+                                {{ width == '100' ?= 'md:col-span-12' }} field_{{ handle }}"
+                            >
+                                <div x-data="{ id: $id('error-label') }" class="flex flex-col">
+                                    {{ field }}
+                                    {{ unless type === 'section' }}
+                                        <label class="absolute text-sm text-cus-gray duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:bg-white peer-focus:text-primary left-1" for="{{ handle }}">
+                                            {{ trans :key="display" }}
+                                            {{ if validate | contains('required') }}
+                                                <span class="text-sm peer-focus:text-primary">*</span>
+                                            {{ /if }}
+                                            {{ if instructions }}
+                                                <p class="font-normal text-sm my-1">{{ trans :key="instructions" }}</p>
+                                            {{ /if }}
+                                        </label>
+                                    {{ /unless }}
+
+                                    {{# Display error label when there is a validation error with the name field. #}}
+                                    <template x-if="errors.{{ handle }}">
+                                        <span class="text-red-800 text-sm font-bold" :id="id" x-text="errors.{{ handle}}"></span>
+                                    </template>
+                                </div>
+
+                            </div>
+                        </template>
+                    {{ /fields }}
+
+                    {{# Pulse button and disable upon sending. #}}
+                    <div class="md:col-span-12 flex justify-end send-msg-btn">
+                        {{ partial:components/button as="button" label="{ trans:strings.form_send }" }}
+                            {{ slot:attributes }}
+                                :disabled="sending" :class="{ 'text-white border border-white/50 bg-primary flex items-center focus:outline-none hover:bg-white hover:text-primary hover:border-primary opacity-25 btn-primary cursor-default': sending }"
+                            {{ /slot:attributes }}
+                        {{ /partial:components/button }}
+                    </div>
+                    <template x-if="success">
+                        {{ partial src="components/notification" type="success" class="md:col-span-12" content="{trans:strings.form_success}" }}
+                    </template>
+                </div>
+
+            {{ /form:create }}
+        </div>
+
+        <script>
+            document.addEventListener('alpine:initializing', () => {
+                Alpine.data('sending', () => {
+                    return {
+                        error: false,
+                        errors: [],
+                        sending: false,
+                        success: false,
+                        sendForm: async function() {
+                            this.sending = true
+
+                            // Post the form.
+                            fetch(this.$refs.form.action, {
+                                headers: {
+                                    'X-Requested-With' : 'XMLHttpRequest',
+                                    'X-CSRF-Token' : await getToken()
+                                },
+                                method: 'POST',
+                                body: new FormData(this.$refs.form)})
+                            .then(res => res.json())
+                            .then(json => {
+                                if (json['success']) {
+                                    this.errors = []
+                                    this.success = true
+                                    this.error = false
+                                    this.sending = false
+                                    this.$refs.form.reset()
+
+                                    setTimeout(function(){
+                                        this.success = false
+                                    }, 4500)
+                                }
+                                if (json['error']) {
+                                    this.sending = false
+                                    this.error = true
+                                    this.success = false
+                                    this.errors = json['error']
+                                }
+                            })
+                            .catch(err => {
+                                err.text().then( errorMessage => {
+                                    this.sending = false
+                                })
+                            })
+                        }
+                    }
+                })
+            })
+        </script>
+    </div>
+</div>

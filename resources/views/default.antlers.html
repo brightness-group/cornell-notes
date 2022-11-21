@@ -1,0 +1,39 @@
+{{#
+	@name Default
+	@desc The default template with an outer wrapper grid as defined in tailwind.config.js. It makes sure all blocks on a page get evenly spaced without having to worry about margins or paddings.
+#}}
+
+<!-- /default.antlers.html -->
+<main id="content">
+
+    {{ if slug == 'privacy-policy' }}
+
+        <div class="relative bg-light-white py-15">
+            <div class="h-header-height"></div>
+            <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-end py-14">
+                    <ul class="flex text-lg text-font-black font-medium leading-none">
+                        <li class="px-3 pt-1 border-r-2 border-font-black"><a href="/">Home</a></li>
+                        <li class="pl-3 pt-1">{{ title }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="py-18 bg-white relative mobile:py-10 cms-page">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="py-9">
+                    {{ page_builder scope="block" }}
+                         {{ partial src="page_builder/{type}" }}
+                    {{ /page_builder }}
+                </div>
+            </div>
+        </div>
+
+    {{ else }}
+        {{ page_builder scope="block" }}
+            {{ partial src="page_builder/{type}" }}
+        {{ /page_builder }}
+    {{ /if }}
+    
+</main>
+<!-- End: /default.antlers.html -->

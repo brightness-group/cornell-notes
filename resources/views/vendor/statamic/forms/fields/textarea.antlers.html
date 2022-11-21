@@ -1,0 +1,14 @@
+{{# Bind custom error classses when there is a validation error with the field. #}}
+<!-- /vendor/statamic/forms/fields/textarea.antlers.html -->
+<textarea
+    class="block h-60 px-4 pb-2.5 pt-4 w-full text-sm text-light-black bg-very-light-gray border-1 border-transparent appearance-none focus:outline-none focus:ring-0 focus:border-primary focus:bg-white peer"
+    :class="{ 'border-red-600 focus-visible:border-red-600': errors.{{ handle }} }"
+    id="{{ handle }}"
+    name="{{ handle }}"
+    rows="5"
+    placeholder="{{ placeholder }}"
+    :aria-invalid="errors.hasOwnProperty('{{ handle }}')"
+    :aria-describedBy="id"
+    {{ js_attributes }}
+>{{ old }}</textarea>
+<!-- End: /vendor/statamic/forms/fields/textarea.antlers.html -->

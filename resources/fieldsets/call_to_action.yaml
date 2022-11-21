@@ -1,0 +1,34 @@
+title: 'Call to action'
+fields:
+  -
+    handle: title
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: hidden
+      display: Title
+      validate:
+        - required
+  -
+    handle: text
+    field: common.text_plain
+    config:
+      validate:
+        - required
+  -
+    handle: image
+    field:
+      mode: list
+      container: assets
+      folder: images
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      max_files: 1
+      display: Image
+      type: assets
+      icon: assets
+      listable: hidden
+      instructions_position: above
+      visibility: visible

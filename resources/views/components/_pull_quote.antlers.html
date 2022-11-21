@@ -1,0 +1,20 @@
+{{#
+	@name Pull quote
+	@desc The pull quote component. A pull quote with an optional author.
+    @set page.article.pull_quote
+#}}
+
+<figure>
+    <div class="relative bg-primary bg-opacity-5 py-11 px-20 thought-section mobile:px-10 mobile:py-10">
+        <div class="relative">
+            <h3 class="text-2xl text-primary font-medium text-center mobile:text-lg">{{ quote | nl2br }}</h3>           
+        </div>
+        {{ if author }}
+        <div class="text-center">
+            <span class="text-2xl font-medium text-center mobile:text-lg">           
+                - {{ author }}           
+            </span>
+        </div>    
+        {{ /if }}
+    </div>
+</figure>

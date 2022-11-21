@@ -1,0 +1,69 @@
+{{#
+@name Blog show
+@desc The blog show template with an outer wrapper grid as defined in tailwind.config.js. It makes sure all blocks on a page get evenly spaced without having to worry about margins or paddings.
+#}}
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ permalink }}"
+        },
+        "headline": "{{ title }}",
+        "image": "{{ config:app:url }}{{ image }}",
+        "datePublished": "{{ date format="Y-m-d\TH:i:s" }}",
+        "author": {
+            "@type": "Person",
+            "name": "DiligentNotes"
+        }
+    }
+</script>
+
+<div class="relative bg-light-white py-15">
+    <div class="h-header-height"></div>
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-end py-14 mobile:py-5 mobile:justify-center">
+            <ul class="flex text-lg text-font-black font-medium leading-none">
+                <li class="px-3 pt-1 border-r-2 border-font-black"><a href="/">Home</a></li>
+                <li class="pl-3 pt-1">Blog</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="py-24 bg-white relative mobile:py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+            <div class="sm:flex lg:justify-start mobile:flex">
+                {{ tags }}
+                    <span class="py-3 bg-brown text-brown px-5 text-sm bg-opacity-10 font-light mr-3">{{ title }}</span>
+                {{ /tags }}
+            </div>
+            <div>
+                <h2 class="py-5 text-3xl text-primary font-medium mobile:text-2xl mobile:pt-5 mobile:pb-2">{{ title }}</h2>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="w-full relative">
+            <img class="w-full max-h-screen object-cover" src="{{ image }}" alt="Diligent Notes">
+            <div class="max-w-7xl mx-auto">
+                <div class="post-blog-date absolute top-0 px-8">
+                    <div class="date-blog bg-primary py-2.5 px-5 text-lg font-light text-white mobile:text-base mobile:py-1.5 mobile:px-3">
+                        {{ date format_localized="%d %B %Y" }}
+                    </div>
+                </div>
+            </div>              
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-9">
+            {{ partial:page_builder/article }}
+            {{ /partial:page_builder/article }}
+        </div>
+    </div>
+</div>
+
+

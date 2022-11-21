@@ -1,0 +1,317 @@
+/* If you don't want to use the JS in CSS syntax from `tailwind.config.site.js` you can add your own custom CSS here. Use different layers to make sure your CSS either get's purged or not: https://tailwindcss.com/docs/functions-and-directives#layer. CSS in the base layer won't get purged. */
+@layer base {}
+@layer components {}
+@layer utilities {}
+.faq-box ul {
+  list-style: revert;
+  padding: revert;
+  margin: revert;
+}
+
+[type=button], [type=submit] {
+  transition: all 0.3s;
+}
+[type=button].bg-primary:hover svg path, [type=submit].bg-primary:hover svg path {
+  fill: #002fbd;
+}
+[type=button].bg-brown:hover svg path, [type=submit].bg-brown:hover svg path {
+  fill: #7a6563;
+}
+
+body [type=button], body [type=reset], body [type=submit], body button {
+  -webkit-appearance: initial;
+}
+
+nav ul li a {
+  position: relative;
+}
+nav ul li a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(100% - 2px);
+  width: 0px;
+  height: 2px;
+  opacity: 0;
+  background: #ffffff;
+  display: inline-block;
+  transition: all 0.3s;
+}
+nav ul li a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.features-brown ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(calc(-50% - 4px));
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url(../assets/images/edit-brown.svg) no-repeat center/contain;
+}
+.features-blue ul li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(calc(-50% - 4px));
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url(../assets/images/edit-blue.svg) no-repeat center/contain;
+}
+@media only screen and (max-width: 991px) {
+  .features-blue ul li::before {
+    right: initial;
+    left: 0;
+  }
+}
+
+.steps .step:first-child h3 span::after {
+  left: 50%;
+  width: calc(50% + 40px);
+}
+@media only screen and (max-width: 767px) {
+  .steps .step:first-child h3 span::after {
+    left: 0;
+    width: 100%;
+  }
+}
+.steps .step:last-child h3 span::after {
+  left: unset;
+  right: 50%;
+  width: calc(50% + 40px);
+}
+@media only screen and (max-width: 767px) {
+  .steps .step:last-child h3 span::after {
+    right: 0;
+    width: 100%;
+  }
+}
+.steps .step h3 {
+  padding-top: 80px;
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .steps .step h3 {
+    padding-top: 50px;
+  }
+}
+.steps .step h3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  display: inline-block;
+  background: #e9eeff;
+  border-radius: 50%;
+}
+.steps .step h3::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  background: #7a6563;
+  border-radius: 50%;
+  -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+          animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.steps .step h3 span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22px;
+  z-index: 0;
+  width: 100%;
+  border-top: 1px dashed #7a6563;
+}
+
+@-webkit-keyframes ping {
+  75%, 100% {
+    transform: translateX(-50%) scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: translateX(-50%) scale(2);
+    opacity: 0;
+  }
+}
+footer .link a,
+footer .telephone a,
+footer .email a {
+  position: relative;
+}
+footer .link a:after,
+footer .telephone a:after,
+footer .email a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 0px;
+  height: 1px;
+  opacity: 0;
+  background: #ffffff;
+  display: inline-block;
+  transition: all 0.3s;
+}
+footer .link a:hover::after,
+footer .telephone a:hover::after,
+footer .email a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+footer .social-link a {
+  transition: all 0.3s;
+}
+footer .social-link a:hover {
+  opacity: 0.8;
+}
+
+#form-contact .field_consent > div label {
+  padding-top: 20px;
+  font-weight: 300;
+  font-size: 14px;
+  color: #0b0500;
+}
+#form-contact .field_consent > div label[for=consent] {
+  padding: 0;
+  font-weight: 300;
+  font-size: 18px;
+  color: #0b0500;
+}
+#form-contact .field_consent > div label a {
+  white-space: nowrap;
+}
+#form-contact .send-msg-btn button {
+  font-weight: 300;
+  background-color: #002fbd;
+  color: #ffffff;
+  font-size: 18px;
+  text-transform: capitalize;
+  border: 1px solid #002fbd;
+  position: relative;
+  padding-right: 40px;
+}
+#form-contact .send-msg-btn button:hover {
+  background-color: #ffffff;
+  color: #002fbd;
+}
+#form-contact .send-msg-btn button:hover:after {
+  background: url(../assets/images/arrow-hover.svg) no-repeat center/contain;
+}
+#form-contact .send-msg-btn button:after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(calc(-50% - 2px));
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url(../assets/images/arrow.svg) no-repeat center/contain;
+}
+
+.blog-listing-item .link-arrow a {
+  height: 40px;
+  width: 40px;
+}
+.blog-listing-item .link-arrow a:before {
+  content: "";
+  position: relative;
+  right: initial;
+  top: 50%;
+  transform: translateY(-50%) translateX(70%) rotate(320deg);
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url(../assets/images/arrow.svg) no-repeat center/contain;
+}
+
+.blog-listing ul li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url(../assets/images/list-arrow.png) no-repeat center/contain;
+}
+
+.thought-section:before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(calc(-50% - 2px));
+  width: 44px;
+  height: 34px;
+  display: inline-block;
+  background: url(../assets/images/quote-blog.png) no-repeat center/contain;
+  background-size: 100% 100%;
+}
+.thought-section:after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(calc(-50% - 2px)) rotate(180deg);
+  width: 44px;
+  height: 34px;
+  display: inline-block;
+  background: url(../assets/images/quote-blog.png) no-repeat center/contain;
+  background-size: 100% 100%;
+}
+@media only screen and (max-width: 767px) {
+  .thought-section:before {
+    left: 5px;
+    width: 30px;
+    height: 20px;
+  }
+  .thought-section:after {
+    right: 5px;
+    width: 30px;
+    height: 20px;
+  }
+}
+
+.blog-listing ul {
+  list-style-type: none;
+  padding: 0;
+}
+.blog-listing ul li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.blog-listing blockquote {
+  padding: 10px 0 10px 15px;
+  font-style: normal;
+  border-color: #7A6563;
+  border-left-width: 8px;
+}
+.blog-listing blockquote p:last-child {
+  margin: 0;
+}
+
+.cms-page a strong {
+  word-break: break-all;
+}/*# sourceMappingURL=custom.css.map */

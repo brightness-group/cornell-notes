@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body [type=button], body [type=reset], body [type=submit], body button {
+    -webkit-appearance: initial;
+}

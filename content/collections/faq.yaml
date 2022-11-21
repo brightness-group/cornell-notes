@@ -1,0 +1,10 @@
+title: FAQ
+template: faq/index
+layout: layout
+mount: a9f3f629-523f-4cf2-b3fa-45e950ecb576
+revisions: false
+slugs: false
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private

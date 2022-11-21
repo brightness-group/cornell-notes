@@ -1,0 +1,78 @@
+{{#
+	@name Pricing
+	@desc The Pricing page builder block.
+    @set page.page_builder.pricing
+#}}
+
+<div class="py-24 bg-white mobile:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-9">
+            <h2 class="text-3xl text-primary font-medium">{{ heading }}</h2>
+            <div class="pt-2.5 pb-5">
+                <div class="w-20 border-t-2 border-brown"></div>
+            </div>
+            <p class="text-xl text-brown">{{ sub_heading }}</p>
+        </div>
+
+        <div class="border border-light-gray">
+            <dl class="grid grid-cols-2 ipadx:grid-cols-1">
+
+                {{ plans }}
+                    <div class="relative ipadx:text-left
+                        {{ if type == 'yearly_plan' }}
+                            text-right border-l border-light-gray
+                        {{ /if }}">
+
+                        <dt>
+                            <div class="pt-16 px-10 flex flex-col ipadx:pt-8 px-8 mobile:pt-4 mobile:px-4 {{ type == 'monthly_plan' ? 'items-start' : 'items-end'}} ipadx:items-start">
+
+                                <div class="mb-12 flex items-center justify-between w-full ipadx:justify-start ipadx:mb-8">
+                                    {{ if type == 'monthly_plan' }}
+                                        <img class="ipadx:order-1 ipadx:pr-3" src="{{ icon }}">
+                                        <h4 class="text-3xl text-brown font-medium ipadx:order-2">{{ price }}</h4>
+                                    {{ else }}
+                                        <h4 class="text-3xl text-primary font-medium ipadx:order-2">{{ price }}</h4>
+                                        <img class="ipadx:order-1 ipadx:pr-3" src="{{ icon }}">
+                                    {{ /if }}
+                                </div>
+
+                                <h3 class="text-3xl {{ type == 'monthly_plan' ? 'text-brown' : 'text-primary'}} font-medium">{{ title }}</h3>
+
+                                <div class="pt-2.5 pb-5">
+                                    <div class="w-20 border-t-2 {{ type == 'monthly_plan' ? 'border-brown' : 'border-primary'}}"></div>
+                                </div>
+
+                                <p class="text-xl text-light-black font-light h-14 ipadx:h-auto">{{ summary }}</p>
+
+                                <a type="button" class="mt-7 mb-12 text-white px-4 py-3 border border-transperent flex items-center justify-start focus:outline-none hover:bg-white ipadx:mb-8
+                                    {{ type == 'monthly_plan' ? 'bg-brown hover:border-brown hover:text-brown' : 'bg-primary hover:border-primary hover:text-primary' }}"
+                                   id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+
+                                    <span class="text-lg font-light leading-none mr-2 mt-1">Start Now</span>
+                                    {{ svg src="arrow" }}
+                                </a>
+                            </div>
+
+                            <div class="features {{ type == 'monthly_plan' ? 'features-brown' : 'features-blue'}} bg-light-white p-10 ipadx:p-8 mobile:p-4">
+                                <h5 class="{{ type == 'monthly_plan' ? 'text-brown' : 'text-primary'}} text-2xl font-medium leading-none mb-5">Features</h5>
+
+                                <ul class="text-lg text-light-black font-light leading-none">
+
+                                    {{ taxonomy:plan_features title:is="{{ type == 'monthly_plan' ? 'Monthly' : 'Yearly' }}" }}  
+
+                                        {{ points }}
+                                            <li class="mb-3 ipadx:pl-7 ipadx:pr-0 {{ title == 'Monthly' ? 'pl-7' : 'pr-7'}} relative"> {{ value }} </li>
+                                        {{ /points }}
+
+                                    {{ /taxonomy:plan_features }}                                    
+                                   
+                                </ul>
+                            </div>
+                        </dt>
+                    </div>
+                {{ /plans }}                
+
+            </dl>
+        </div>
+    </div>
+</div>

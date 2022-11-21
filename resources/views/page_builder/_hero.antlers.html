@@ -1,0 +1,68 @@
+{{#
+	@name Hero
+	@desc The Hero page builder block.
+    @set page.page_builder.hero
+#}}
+
+<div class="relative bg-primary pt-20">
+    <div class="relative z-10 mt-2.5 mobile:flex mobile:flex-wrap mobile:flex-col-reverse" style="background: url('/assets/images/left-note-shape.svg') no-repeat left center / 100px, url('/assets/images/right-note-shape.svg') no-repeat right center / contain">
+        <div class="absolute z-10 top-0 right-0 w-1/2 h-full ml-auto pl-4 py-20 flex justify-end ipadx:relative ipadx:w-full ipadx:ml-0 ipadx:pl-0 mobile:py-14" data-aos="fade-left" data-aos-delay="500">
+            <div class="relative" >
+                <img class="ml-auto h-full object-contain" src="{{ image }}" alt="Diligent Notes Dashboard">
+
+                <a href="#features" class="absolute -top-5 left-1/4 px-5 py-3 bg-primary/70 border border-very-light-gray/50 flex items-center mobile:p-2" data-aos="fade-top" data-aos-delay="650">
+                        <span class="w-12 h-12 p-2.5 bg-primary mobile:w-8 mobile:h-8">
+                            <img src="{{ caption_1_icon }}"/>
+                        </span>
+                    <span class="ml-3 text-xl text-white font-medium leading-none mobile:text-base">{{ caption_1 }}</span>
+                </a>
+                <a href="#features" class="absolute top-1/4 -left-12 px-5 py-3 bg-primary/70 border border-very-light-gray/50 flex items-center ipadx:left-8 mobile:p-2" data-aos="fade-right" data-aos-delay="800">
+                        <span class="w-12 h-12 p-2.5 bg-primary mobile:w-8 mobile:h-8">
+                            <img src="{{ caption_2_icon }}"/>
+                        </span>
+                    <span class="ml-3 text-xl text-white font-medium leading-none mobile:text-base">{{ caption_2 }}</span>
+                </a>
+                <a href="#features" class="absolute top-2/3 -left-16 px-5 py-3 bg-primary/70 border border-very-light-gray/50 flex items-center ipadx:left-8 mobile:p-2 mobile:top-1/2" data-aos="fade-right" data-aos-delay="950">
+                        <span class="w-12 h-12 p-2.5 bg-primary mobile:w-8 mobile:h-8">
+                            <img src="{{ caption_3_icon }}"/>
+                        </span>
+                    <span class="ml-3 text-xl text-white font-medium leading-none mobile:text-base">{{ caption_3 }}</span>
+                </a>
+                <a href="#features" class="absolute bottom-0 right-5 px-5 py-3 bg-primary/70 border border-very-light-gray/50 flex items-center mobile:p-2" data-aos="fade-bottom" data-aos-delay="1100">
+                        <span class="w-12 h-12 p-2.5 bg-primary mobile:w-8 mobile:h-8">
+                            <img src="{{ caption_4_icon }}"/>
+                        </span>
+                    <span class="ml-3 text-xl text-white font-medium leading-none mobile:text-base">{{ caption_4 }}</span>
+                </a>
+            </div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ipadx:w-full lap-touch:w-1/2 lap-touch:m-0 mobile:static">
+            <div class="absolute z-10 -bottom-12 left-0 pl-4">
+                <a href="#features" class="w-24 h-24 px-5 py-3 text-center bg-primary border-2 border-white rounded-full flex items-center justify-center">
+                    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_o87tttfh.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+                </a>
+            </div>
+            <div class="lg:max-w-2xl lg:w-full">
+                <main class="mx-auto max-w-7xl px-4 py-40 ipadx:pt-0 ipadx:pb-20 mobile:px-0 mobile:py-5">
+                    <div class="lg:text-left">
+                        <h1 class="font-bold text-white text-5xl ipad-1:text-3xl">
+                            <span class="block xl:inline">{{ heading }}</span>
+                        </h1>
+                        <div class="py-4">
+                            <div class="w-32 border-t-2 border-white/40"></div>
+                        </div>
+                        <p class="mt-3 text-white text-2xl font-medium ipad-1:text-xl">{{ sub_heading }}</p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="/login" type="button" class="text-white px-4 py-3 border border-white/50 bg-primary flex items-center focus:outline-none hover:bg-white hover:text-primary" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="text-lg font-light leading-none mr-2 mt-1">Get Started</span>
+                                    {{ svg src="arrow" }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>

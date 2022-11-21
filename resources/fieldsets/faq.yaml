@@ -1,0 +1,24 @@
+title: Faq
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      display: Heading
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: sub_heading
+    field:
+      input_type: text
+      antlers: false
+      display: 'Sub Heading'
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible

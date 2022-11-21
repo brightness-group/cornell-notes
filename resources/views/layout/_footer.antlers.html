@@ -1,0 +1,91 @@
+{{#
+	@name Footer
+	@desc The sites footer rendered on each page.
+#}}
+
+<footer class="relative bg-primary pt-20 mt-40">
+    <div style="background: url('/assets/images/left-note-shape.svg') no-repeat left center / 100px, url('/assets/images/right-note-shape.svg') no-repeat right center / contain">
+        <div class="relative z-10 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mobile:px-4">
+
+            {{ partial:components/newsletter }}
+
+            <div class="footer-content py-20 grid grid-cols-2 gap-x-8 text-white font-light mobile:grid-cols-1 mobile:pb-0">
+                <div class="footer-company-info">
+                    <div class="footer-logo">
+                        {{ partial:components/logo type="footer" }}
+                    </div>
+
+                    <div class="about-company mt-11">
+                        {{ if configuration:tagline }}
+                            <p class="mb-5">{{ configuration:tagline }}</p>
+                        {{ /if }}
+
+                        <ul class="contact-info">
+
+                            {{ if configuration:address }}
+                            <li class="address mb-5 flex">
+                                {{ svg src="marker" class="mt-1" }}
+                                <span class="ml-2.5 whitespace-pre-wrap">{{ configuration:address }}</span>
+                            </li>
+                            {{ /if }}
+
+                            {{ if configuration:telephone }}
+                                <li class="telephone mb-5 flex items-center">
+                                    {{ svg src="phone" }}
+                                    <a class="ml-2.5" href="tel:{{ configuration:telephone }}">{{ configuration:telephone }}</a>
+                                </li>
+                            {{ /if }}
+
+                            {{ if configuration:email }}
+                                <li class="email flex items-center">
+                                    {{ svg src="envelope" }}
+                                    <a class="ml-2.5" href="mailto:{{ configuration:email }}">{{ configuration:email }}</a>
+                                </li>
+                            {{ /if }}
+                        </ul>
+                    </div>
+
+                    {{ if social_media:social_media }}
+                        <div class="social-media mt-12">
+                            <p class="mb-4">Follow Us</p>
+
+                            <ul class="social-links flex items-center">
+                                {{ social_media:social_media }}
+                                    <li class="social-link px-3 {{ if first }} pl-0 {{ /if }} {{ type }}">
+                                        <a href="{{ prefix }}{{ handle }}"
+                                           rel="noopener"
+                                           aria-label="{{ config:app:name }} {{ trans:strings.on }} {{ type | title }}"
+                                           target="_blank">
+                                           {{ svg :src="type" alt="" aria-hidden="true" }}
+                                        </a>
+                                    </li>
+                                {{ /social_media:social_media }}
+                            </ul>
+                        </div>
+                    {{ /if }}
+                </div>
+
+                {{ partial:navigation/footer }}
+
+            </div>
+        </div>
+
+        {{# Let's users reset their cookie consent when you use the cookie banner. #}}
+        {{ yield:reset_cookie_consent }}
+
+        <div class="relative z-10">
+            <div class="copyright py-5 border-t border-white/50 text-center">
+                <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+
+                    <p class="m-0 text-sm text-light-white font-light leading-none">
+                        &copy; {{ configuration:copyright_since }}
+                        {{ unless (now | format('Y')) == configuration:copyright_since }}
+                            - {{ now | format('Y') }}
+                            {{ /unless }}
+                        {{ configuration:copyright_name ?? config:app:name }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,30 @@
+{{#
+	@name Call to action
+	@desc The call to action page builder block.
+    @set page.page_builder.call_to_action
+#}}
+
+<div class="relative bg-primary overflow-hidden">
+    <div class="py-8" style="background: url('/assets/images/left-note-shape.svg') no-repeat left center / 100px, url('/assets/images/right-note-shape.svg') no-repeat right center / contain">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 ipadx:flex-wrap">
+            <div class="w-2/4 ipadx:w-full">
+                <h2 class="font-medium text-white text-3xl">{{title}}</h2>
+                <div class="py-4">
+                    <div class="w-32 border-t-2 border-white/40"></div>
+                </div>
+                <p class="mt-3 text-white text-xl font-medium">{{text}}</p>
+                <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                    <div class="rounded-md shadow">
+                        <a type="button" href="/login" class="text-white px-4 py-3 border border-white/50 bg-primary flex items-center focus:outline-none hover:bg-white hover:text-primary" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                            <span class="text-lg font-light leading-none mr-2 mt-1">Get Started</span>
+                            {{ svg src="arrow" }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-2/4 pl-10 flex justify-end ipadx:w-full ipadx:justify-center ipadx:pl-0 ipadx:pt-10">
+                <img src="{{ image }}" alt="Ready to dive">
+            </div>
+        </div>
+    </div>
+</div>

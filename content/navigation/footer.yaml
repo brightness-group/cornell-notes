@@ -1,0 +1,5 @@
+title: Footer
+collections:
+  - pages
+  - blog
+max_depth: 1

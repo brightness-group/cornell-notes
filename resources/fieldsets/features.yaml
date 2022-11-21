@@ -1,0 +1,34 @@
+title: Features
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      display: Heading
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: sub_heading
+    field: common.text_plain
+    config:
+      display: 'Sub Heading'
+  -
+    handle: features
+    field:
+      collapse: false
+      sets:
+        feature:
+          display: Feature
+          fields:
+            -
+              import: feature
+      display: Features
+      type: replicator
+      icon: replicator
+      listable: hidden
+      instructions_position: above
+      visibility: visible

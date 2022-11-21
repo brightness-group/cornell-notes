@@ -1,0 +1,55 @@
+title: 'Cornell Note'
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      display: Heading
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: sub_heading
+    field: common.text_plain
+    config:
+      display: 'Sub Heading'
+  -
+    handle: points
+    field:
+      fields:
+        -
+          handle: caption
+          field:
+            input_type: text
+            antlers: false
+            display: Caption
+            type: text
+            icon: text
+            listable: hidden
+            instructions_position: above
+            visibility: visible
+            width: 50
+        -
+          handle: figure
+          field: common.image
+          config:
+            display: Figure
+            width: 50
+        -
+          handle: description
+          field: common.text_plain
+          config:
+            display: Description
+      mode: stacked
+      max_rows: 3
+      min_rows: 3
+      reorderable: true
+      display: Points
+      type: grid
+      icon: grid
+      listable: hidden
+      instructions_position: above
+      visibility: visible

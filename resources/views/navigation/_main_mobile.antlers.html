@@ -1,0 +1,14 @@
+{{#
+	@name Main mobile navigation
+	@desc The sites main mobile navigation rendered on each page. It's 2 levels deep by default and uses AlpineJS for interactivity.
+#}}
+
+<div class="lg:hidden" id="mobile-menu" x-show="show">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+        {{ nav:main max_depth="1" include_home="true" }}
+            <a href="{{ url }}" @click="show = false" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium {{ is_current || is_parent ? '' : '' }}">
+                {{ title }}
+            </a>
+        {{ /nav:main }}
+    </div>
+</div>

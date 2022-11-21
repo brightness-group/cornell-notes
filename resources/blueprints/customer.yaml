@@ -1,0 +1,116 @@
+hide: true
+title: Customer
+sections:
+  main:
+    display: Profile
+    fields:
+      -
+        handle: name
+        field:
+          type: text
+          validate:
+            - required
+          display: Name
+          instructions_position: above
+          listable: true
+          read_only: false
+          placeholder: Name
+          input_type: text
+          antlers: false
+      -
+        handle: email
+        field:
+          placeholder: Email
+          input_type: email
+          antlers: false
+          display: Email
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          read_only: true
+          validate:
+            - required
+            - email
+      -
+        handle: gender
+        field:
+          options:
+            Male: Male
+            Female: Female
+          inline: true
+          cast_booleans: false
+          display: Gender
+          type: radio
+          icon: radio
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: id
+        field:
+          display: ID
+          type: hidden
+          icon: hidden
+          listable: hidden
+          instructions_position: above
+          read_only: false
+  subscription:
+    display: Subscription
+    fields:
+      - handle: current_plan
+        field:
+          display: Plan
+          type: subscription
+          icon: licensing
+          listable: false
+          instructions_position: above
+          read_only: false
+      -
+        handle: extend_trial
+        field:
+          mode: toggle
+          display: 'Extend Trial'
+          type: revealer
+          icon: revealer
+          instructions: 'Do you want to extend the Stripe subscription trial period?'
+          width: 50
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          if:
+            current_plan: 'custom hasTrial'
+      -
+        handle: trial_ends_at
+        field:
+          mode: single
+          time_enabled: false
+          time_seconds_enabled: false
+          full_width: false
+          inline: false
+          columns: 1
+          rows: 1
+          display: 'Trial ends at'
+          type: date
+          icon: date
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          width: 50
+          if:
+            extend_trial: 'equals true'
+          validate:
+            - date
+            - 'after_or_equal:tomorrow'
+  notes:
+    display: Notes
+    fields:
+      -
+        handle: folders
+        field:
+          display: Folder & Notes
+          type: notes_overview
+          icon: book-pages
+          listable: hidden
+          instructions_position: above
+          read_only: false

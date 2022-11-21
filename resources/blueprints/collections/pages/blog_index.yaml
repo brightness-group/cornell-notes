@@ -1,0 +1,63 @@
+title: 'List blog'
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        import: page_builder
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: meta
+        field:
+          display: Meta
+          type: section
+          icon: section
+          instructions: 'This entry''s meta data.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: slug
+        field:
+          type: slug
+          localizable: true
+          display: Slug
+          instructions_position: above
+          listable: hidden
+          read_only: false
+          generate: true
+          validate:
+            - required
+            - 'unique_entry_value:{collection},{id},{site}'
+      -
+        handle: parent
+        field:
+          type: entries
+          collections:
+            - pages
+          max_items: 1
+          listable: false
+          localizable: true
+      -
+        handle: template
+        field:
+          default: blog/index
+          type: hidden
+          icon: hidden
+          listable: hidden
+          instructions_position: above
+          read_only: false
+  seo:
+    display: SEO
+    fields:
+      -
+        import: seo

@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es2018",
+        "module": "commonjs",
+        "lib": ["es5", "es6", "es2015", "es2016", "es2017", "es2018", "esnext", "dom"],
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": false,
+        "declaration": true,
+        "types": [
+            "@types/node",
+        ],
+    },
+    "include": ["resources/js/**/*"]
+}

@@ -1,0 +1,25 @@
+<div class="footer-links grid grid-cols-3 gap-x-8 mobile:grid-cols-1 mobile:mt-12">
+    <div>
+        <ul class="links">
+            {{ nav:footer_1 max_depth="1" }}
+                <li class="link pb-5"><a href="{{ url }}">{{ title }}</a></li>
+            {{ /nav:footer_1 }}
+        </ul>
+    </div>
+
+    <div>
+        <ul class="links">
+            {{ nav:footer_2 max_depth="1" }}
+                <li class="link pb-5"><a href="{{ url }}">{{ title }}</a></li>
+            {{ /nav:footer_2 }}
+        </ul>
+    </div>
+
+    <div>
+        <ul class="links">
+            {{ nav:footer_3 max_depth="1" }}
+                <li class="link pb-5"><a href="{{ url }}">{{ title }}</a></li>
+            {{ /nav:footer_3 }}
+        </ul>
+    </div>
+</div>

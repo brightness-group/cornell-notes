@@ -1,0 +1,25 @@
+title: Feature
+fields:
+  -
+    handle: title
+    field:
+      input_type: text
+      antlers: false
+      display: Title
+      type: text
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: icon
+    field: common.image
+    config:
+      display: Icon
+      width: 50
+  -
+    handle: description
+    field: common.text_plain
+    config:
+      display: Description

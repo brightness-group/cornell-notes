@@ -1,0 +1,105 @@
+title: Hero
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      display: Heading
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: sub_heading
+    field: common.text_plain
+    config:
+      display: 'Sub Heading'
+  -
+    handle: hero_image
+    field:
+      display: 'Hero Image'
+      type: section
+      icon: section
+      instructions: 'Configure content of hero image.'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: image
+    field: figure.image
+    config:
+      width: 100
+  -
+    handle: caption_1
+    field:
+      input_type: text
+      antlers: false
+      display: 'Caption 1'
+      type: text
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: caption_1_icon
+    field: common.image
+    config:
+      display: 'Caption 1 Icon'
+      width: 50
+  -
+    handle: caption_2
+    field:
+      input_type: text
+      antlers: false
+      display: 'Caption 2'
+      type: text
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: caption_2_icon
+    field: common.image
+    config:
+      display: 'Caption 2 Icon'
+      width: 50
+  -
+    handle: caption_3
+    field:
+      input_type: text
+      antlers: false
+      display: 'Caption 3'
+      type: text
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: caption_3_icon
+    field: common.image
+    config:
+      display: 'Caption 3 Icon'
+      width: 50
+  -
+    handle: caption_4
+    field:
+      input_type: text
+      antlers: false
+      display: 'Caption 4'
+      type: text
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: caption_4_icon
+    field: common.image
+    config:
+      display: 'Caption 4 Icon'
+      width: 50

@@ -1,0 +1,31 @@
+{{#
+	@name Main desktop navigation
+	@desc The sites main desktop navigation rendered on each page. It's 2 levels deep by default and uses AlpineJS for interactivity.
+#}}
+
+<div class="absolute inset-y-0 right-0 flex items-center pr-2 ipad-1:relative ipad-1:ml-0 ipad-1:pr-0 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+    <div class="hidden lg:block sm:ml-6">
+        <ul class="flex items-center">
+            {{ nav:main max_depth="1" include_home="true" }}
+                <li>
+                    <a href="{{ url }}" class="inline-block text-white hover:text-white px-4 py-9 text-lg font-light leading-none
+                        {{ is_current || is_parent
+                            ? ''
+                            : '' }}">
+
+                        {{ title }}
+
+                    </a>
+                </li>
+            {{ /nav:main }}
+        </ul>
+    </div>
+
+
+    <div class="ml-4 relative ipad-1:ml-0">
+        <a href="{{ if !logged_in }} /login {{ else }} /profile {{ /if }}" type="button" class="text-white px-4 py-3 border border-white/50 bg-primary flex items-center focus:outline-none hover:bg-white hover:text-primary mobile:px-2 mobile:py-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            {{ svg src="user" }}
+            <span class="text-lg font-light leading-none ml-2 mt-1">{{ if !logged_in }} Login {{ else }} Profile {{ /if }}</span>
+        </a>
+    </div>
+</div>

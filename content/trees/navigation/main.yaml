@@ -1,0 +1,21 @@
+tree:
+  -
+    id: ae84904c-b9ed-4ee3-bbc3-ae5c00feab7c
+    entry: home
+  -
+    id: de713d9c-2cf0-440a-9e5d-c4516d730f19
+    title: 'Live Demo'
+    url: /demo
+  -
+    id: b6a01e31-be5d-4bca-8e0d-97e6d40ee937
+    title: Notes
+    url: /cornell-notes
+  -
+    id: 118801dd-6faa-4411-a52f-9c97e66c7fc2
+    entry: 6729e1ed-46f6-4398-afef-d0c980821062
+  -
+    id: 7185b1e8-9e93-44eb-9d54-5869c1f8e4fd
+    entry: 5c526dbf-9dd7-4c52-98d8-54e00ebddfb6
+  -
+    id: 1c837d25-e442-44b4-98a4-8e20775be6cc
+    entry: a9f3f629-523f-4cf2-b3fa-45e950ecb576

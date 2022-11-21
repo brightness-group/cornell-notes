@@ -1,0 +1,43 @@
+{{#
+    @name Blog index
+    @desc The blog index template with an outer wrapper grid as defined in tailwind.config.js. It makes sure all blocks on a page get evenly spaced without having to worry about margins or paddings.
+#}}
+
+<div class="relative bg-light-white py-15">
+    <div class="h-header-height"></div>
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-end py-14 mobile:py-5 mobile:justify-center">
+            <ul class="flex text-lg text-font-black font-medium leading-none">
+                <li class="px-3 pt-1 border-r-2 border-font-black"><a href="/">Home</a></li>
+                <li class="pl-3 pt-1">{{ title }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<main class="outer-grid">
+    <div class="bg-white relative mobile:py-0">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:col-span-10 md:col-start-2 mb-5">
+                {{ partial:typography/h2 :content="title" }}
+                <div class="pt-2.5 pb-5">
+                    <div class="w-20 border-t-2 border-brown"></div>
+                </div>
+            </div>
+            <div class="blog-listing-item flex -mx-5 flex-wrap">
+                {{ collection:blog limit="10" paginate="true" as="items" }}
+                    {{ items }}
+                        {{ partial:components/blog_post class="md:col-span-5 md:even:col-start-2" }}
+                    {{ /items }}
+
+                    <div class="w-full">
+                        {{ partial:components/pagination }}
+                    </div>
+                {{ /collection:blog }}
+            </div>    
+        </section>
+    </div>    
+
+    {{ page_builder scope="block" }}
+        {{ partial src="page_builder/{type}" }}
+    {{ /page_builder }}
+</main>

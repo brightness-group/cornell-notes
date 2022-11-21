@@ -1,0 +1,407 @@
+/* If you don't want to use the JS in CSS syntax from `tailwind.config.site.js` you can add your own custom CSS here. Use different layers to make sure your CSS either get's purged or not: https://tailwindcss.com/docs/functions-and-directives#layer. CSS in the base layer won't get purged. */
+
+@layer base {
+}
+
+@layer components {
+}
+
+@layer utilities {
+}
+
+.faq-box ul {
+    list-style: revert;
+    padding: revert;
+    margin: revert;
+}
+
+$transparent: transparent;
+$light-black: #0b0500;
+$white: #ffffff;
+$light-white: #fcfafa;
+$light-primary: #e9eeff;
+$primary: #002fbd;
+$secondary: #072684;
+$brown: #7a6563;
+$gray: #898989;
+$light-gray: #c8d3d5;
+
+[type="button"], [type="submit"] {
+    transition: all 0.3s;
+    &.bg-primary {
+        &:hover {
+            svg {
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+    }
+    &.bg-brown {
+        &:hover {
+            svg {
+                path {
+                    fill: $brown;
+                }
+            }
+        }
+    }
+}
+
+body{
+    [type="button"], [type="reset"], [type="submit"], button{
+        -webkit-appearance: initial;
+    }
+}
+
+nav {
+    ul {
+        li {
+            a {
+                position: relative;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: calc(100% - 2px);
+                    width: 0px;
+                    height: 2px;
+                    opacity: 0;
+                    background: $white;
+                    display: inline-block;
+                    transition: all 0.3s;
+                }
+                &:hover {
+                    &::after {
+                        width: 100%;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.features {
+    &-brown {
+        ul {
+            li {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(calc(-50% - 4px));
+                    width: 16px;
+                    height: 16px;
+                    display: inline-block;
+                    background: url(../assets/images/edit-brown.svg) no-repeat center / contain;
+                }
+            }
+        }
+    }
+    &-blue {
+        ul {
+            li {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(calc(-50% - 4px));
+                    width: 16px;
+                    height: 16px;
+                    display: inline-block;
+                    background: url(../assets/images/edit-blue.svg) no-repeat center / contain;
+                    @media only screen and (max-width:991px) {
+                        right: initial;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.steps {
+    .step {
+        &:first-child {
+            h3 {
+                span {
+                    &::after {
+                        left: 50%;
+                        width: calc(50% + 40px);
+                        @media only screen and (max-width:767px) {
+                            left: 0;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+        &:last-child {
+            h3 {
+                span {
+                    &::after {
+                        left: unset;
+                        right: 50%;
+                        width: calc(50% + 40px);
+                        @media only screen and (max-width:767px) {
+                            right: 0;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+        h3 {
+            padding-top: 80px;
+            position: relative;
+            @media only screen and (max-width:767px) {
+                padding-top: 50px;
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 50%;
+                z-index: 1;
+                transform: translateX(-50%);
+                width: 44px;
+                height: 44px;
+                display: inline-block;
+                background: $light-primary;
+                border-radius: 50%;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                top: 11px;
+                left: 50%;
+                z-index: 2;
+                transform: translateX(-50%);
+                width: 22px;
+                height: 22px;
+                display: inline-block;
+                background: $brown;
+                border-radius: 50%;
+                animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            }
+            span {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 22px;
+                    z-index: 0;
+                    width: 100%;
+                    border-top: 1px dashed $brown;
+                }
+            }
+        }
+    }
+}
+
+@keyframes ping {
+    75%,
+    100% {
+        transform: translateX(-50%) scale(2);
+        opacity: 0;
+    }
+}
+
+footer {
+    .link,
+    .telephone,
+    .email {
+        a {
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 100%;
+                width: 0px;
+                height: 1px;
+                opacity: 0;
+                background: $white;
+                display: inline-block;
+                transition: all 0.3s;
+            }
+            &:hover {
+                &::after {
+                    width: 100%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .social-link {
+        a {
+            transition: all 0.3s;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+#form-contact{
+    .field_consent{
+        > div{
+            label{
+                padding-top: 20px;
+                font-weight: 300;
+                font-size: 14px;
+                color: $light-black;
+            }
+            label[for="consent"]{
+                padding: 0;
+                font-weight: 300;
+                font-size: 18px;
+                color: $light-black;
+            }
+            label{
+                a{
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+    .send-msg-btn{
+        button{
+            font-weight: 300;
+            background-color: $primary;
+            color: $white;
+            font-size: 18px;
+            text-transform: capitalize;
+            border: 1px solid $primary;
+            position: relative;
+            padding-right: 40px;
+            &:hover{
+                background-color: $white;
+                color: $primary;
+                &:after{
+                    background: url(../assets/images/arrow-hover.svg) no-repeat center/contain;
+                }
+            }
+            &:after{
+                content: "";
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(calc(-50% - 2px));
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+                background: url(../assets/images/arrow.svg) no-repeat center/contain;
+            }
+        }
+    }
+}
+
+.blog-listing-item{
+    .link-arrow{
+        a{
+            height: 40px;
+            width: 40px;
+            &:before{
+                content: "";
+                position: relative;
+                right: initial;
+                top: 50%;
+                transform: translateY(-50%) translateX(70%) rotate(320deg);
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+                background: url(../assets/images/arrow.svg) no-repeat center/contain;
+            }
+        }
+    }
+}
+
+.blog-listing{
+    ul{
+        li{
+            &:before{
+                content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 10px;
+                    transform: translateY(calc(-50%));
+                    width: 16px;
+                    height: 16px;
+                    display: inline-block; 
+                    background: url(../assets/images/list-arrow.png) no-repeat center / contain;
+            }
+        }
+    }
+}
+
+.thought-section{
+    &:before{
+        content: "";
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(calc(-50% - 2px));
+        width: 44px;
+        height: 34px;
+        display: inline-block; 
+        background: url(../assets/images/quote-blog.png) no-repeat center / contain;
+        background-size: 100% 100%;
+    }
+    &:after{
+        content: "";
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(calc(-50% - 2px)) rotate(180deg);
+        width: 44px;
+        height: 34px;
+        display: inline-block; 
+        background: url(../assets/images/quote-blog.png) no-repeat center / contain;
+        background-size: 100% 100%;
+    }
+    @media only screen and (max-width:767px) {
+        &:before{
+            left: 5px;
+            width: 30px;
+            height: 20px;
+        }
+        &:after{
+            right: 5px;
+            width: 30px;
+            height: 20px;
+        }
+    }
+}
+.blog-listing{
+    ul{
+        list-style-type: none;
+        padding: 0;
+        li{
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 1.25rem;
+        }
+    }
+    blockquote{
+        padding: 10px 0 10px 15px;
+        font-style: normal;
+        border-color: #7A6563;
+        border-left-width: 8px;
+        p{
+            &:last-child{
+                margin: 0;
+            }
+        }
+    }
+}
+
+.cms-page{
+    a{
+        strong{
+            word-break: break-all;
+        }
+    }
+}

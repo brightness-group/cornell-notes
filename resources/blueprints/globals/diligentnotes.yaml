@@ -1,0 +1,43 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: data_storage
+        field:
+          input_type: number
+          antlers: false
+          display: 'Data Storage'
+          type: text
+          icon: text
+          instructions: 'Enter Data Storage'
+          listable: hidden
+          instructions_position: below
+          visibility: visible
+          validate:
+            - required
+          width: 75
+      -
+        handle: unites
+        field:
+          options:
+            KB: KB
+            MB: MB
+            GB: GB
+          multiple: false
+          clearable: false
+          searchable: true
+          taggable: false
+          push_tags: false
+          cast_booleans: false
+          default: MB
+          display: Unites
+          type: select
+          icon: select
+          instructions: 'Select the data storage unites'
+          width: 25
+          listable: hidden
+          instructions_position: below
+          visibility: visible
+          validate:
+            - required
