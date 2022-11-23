@@ -67,8 +67,6 @@ export default {
     data() {
         return {
             totalPages: 1,
-            roots: ['cue', 'note', 'summary'],
-            defaultRoot: { cue: '', note: '', summary: '' },
             cursorPosition: null,
             removedPages: [],
             mediaTags: ['FIGURE', 'IMG', 'VIDEO', 'OEMBED'],
@@ -136,37 +134,6 @@ export default {
             }
         },
 
-        toggleToolbarItems(editor, type, timeOut = true) {
-            const commands = [
-                'alignment', 'blockQuote', 'code', 'codeBlock', 'heading', 'horizontalLine', 'indent', 'outdent', 'todoList',
-                'imageTextAlternative', 'toggleImageCaption', 'uploadImage', 'imageUpload', 'imageInsert', 'insertImage', 'mediaEmbed'
-            ];
-
-            const demoDisabled = ['imageTextAlternative', 'toggleImageCaption', 'uploadImage', 'imageUpload', 'imageInsert'];
-
-            const self = this;
-            const demo = this.demo;
-
-            commands.forEach(function (cmd) {
-                if (demo && demoDisabled.includes(cmd)) {
-                    self.togglePlugin(editor, cmd, false, timeOut);
-                } else {
-                    self.togglePlugin(editor, cmd, type, timeOut);
-                }
-            });
-        },
-
-        togglePlugin(editor, cmd, type, timeOut) {
-            if (timeOut) {
-                setTimeout(function () {
-                    editor.commands.get(cmd).isEnabled = type;
-                });
-            }
-            else {
-                editor.commands.get(cmd).isEnabled = type;
-            }
-        },
-
         saveNotes(editor) {
             return new Promise(resolve => {
                 if (!this.demo) {
@@ -231,96 +198,6 @@ export default {
                     }
                 }
             });
-        },
-
-        focusNextPage(editor, currentRoot, html, cursor) {
-            const id = currentRoot.split('-');
-            let nextFocus = `${id[0]}-${++id[1]}`;
-
-            if (!document.getElementById(nextFocus)) {
-                nextFocus = `${id[0]}-${this.nextFocusId(id[1])}`;
-            }
-
-            if (!document.getElementById(nextFocus)) {
-                this.addPage(nextFocus, html, cursor);
-            } else {
-                this.$nextTick(function () {
-                    let rootData = editor.getData({ rootName: nextFocus })
-
-                    this.focus(editor, nextFocus, html + rootData, cursor);
-                });
-            }
-        },
-
-        focusPrevPage(editor, isRemovePage = false) {
-            const focusedElement = editor.ui.focusTracker.focusedElement
-
-            const id = focusedElement.id.split('-');
-            let prevFocus = `${id[0]}-${--id[1]}`;
-
-            if (isRemovePage) {
-                prevFocus = `${id[0]}-${this.previousFocusId(id[1])}`;
-            }
-
-            if (document.getElementById(prevFocus) && !editor.getData({ rootName: focusedElement.id })) {
-                this.focus(editor, prevFocus);
-            }
-        },
-
-        focusCurrent(editor) {
-            let self = this;
-
-            this.$nextTick(function () {
-                const position = toRaw(self.cursorPosition);
-
-                if (position) {
-                    const root = editor.model.document.getRoot(position.root.rootName)
-
-                    let id = position.root.rootName.split('-');
-                    let nextRoot = `${id[0]}-${++id[1]}`;
-
-                    let error = false;
-
-                    try {
-                        root.offsetToIndex(position.path[0])
-                    } catch (e) {
-                        console.log('focusCurrent error', e);
-                        error = true;
-                    }
-
-                    if (!error) {
-                        let hasChild = root.getChild(root.offsetToIndex(position.path[0]));
-
-                        editor.model.change(writer => {
-                            if (hasChild) {
-                                try {
-                                    writer.setSelection(position);
-                                } catch (e) {
-                                    console.log('focusCurrent setSelection error', e);
-                                    this.cursorAtEnd(editor, nextRoot, writer);
-                                }
-                            } else {
-                                this.cursorAtEnd(editor, nextRoot, writer);
-                            }
-
-                            self.cursorPosition = null;
-                        });
-                    } else {
-                        this.focusAtEnd(editor, nextRoot);
-                        self.cursorPosition = null;
-                    }
-                }
-            });
-        },
-
-        focusAtEnd(editor, root) {
-            editor.model.change(writer => {
-                this.cursorAtEnd(editor, root, writer);
-            });
-        },
-
-        cursorAtEnd(editor, root, writer) {
-            writer.setSelection(writer.createPositionAt(editor.model.document.getRoot(root), 'end'));
         },
 
         focus(editor, root, html = null, cursor) {
